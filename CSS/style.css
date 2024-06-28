@@ -10,7 +10,7 @@
     background-color: black;
     height: 100vh;
     width: 100%; 
-    background-image: url('images/king.jpg');
+    background-image: url('/images/king.jpg');
     background-size: contain;
     background-position: right; 
     background-repeat: no-repeat;
