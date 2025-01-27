@@ -11,8 +11,9 @@ Currently diving deep into:
 - Machine Learning
 - Deep Learning
 
+
 ## 💞️ Collaboration
-I'm looking to collaborate on backend projects. If you have an interesting project, let's connect!
+I'm looking to collaborate on projects. If you have an interesting project, let's connect!
 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samuel-tuoyo-%F0%9F%93%A2-8568b62b6/) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://twitter.com/Tuoyos26091) [![WhatsApp](https://img.shields.io/badge/WhatsApp-green.svg?logo=WhatsApp&logoColor=white)](https://wa.me/+2349150309346) 
