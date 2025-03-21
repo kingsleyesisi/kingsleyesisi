@@ -5,6 +5,7 @@ I'm passionate about **innovative** and **secure** software development. My focu
 - Machine Learning 🤖
 - Deep Learning 🧠
 - Backend Development 💻
+- Scripting and Automation
 
 ## 🌱 Current Learning Journey
 Currently diving deep into:
