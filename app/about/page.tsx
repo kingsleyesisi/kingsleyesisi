@@ -7,34 +7,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { jobs } from "@/data/jobs"
 
 export default function AboutPage() {
   const [introComplete, setIntroComplete] = useState(false)
   const [bioComplete, setBioComplete] = useState(false)
 
-  const experiences = [
-    {
-      title: "Senior Backend Developer",
-      company: "SecureTech Solutions",
-      period: "2021 - Present",
-      description:
-        "Leading the backend development team, implementing Django architectures, and developing secure API endpoints. Integrating machine learning models for predictive analytics.",
-    },
-    {
-      title: "Python Developer",
-      company: "DataDriven Systems",
-      period: "2018 - 2021",
-      description:
-        "Developed and maintained web applications using Django, Flask, and PostgreSQL. Implemented CI/CD pipelines and automated testing for Python applications.",
-    },
-    {
-      title: "Junior Web Developer",
-      company: "TechStart Labs",
-      period: "2016 - 2018",
-      description:
-        "Worked on backend development using Python and Django. Collaborated with frontend developers to implement RESTful APIs and database models.",
-    },
-  ]
 
   const skills = [
     { category: "Languages", items: ["Python", "JavaScript", "SQL", "Bash"] },
@@ -71,7 +49,7 @@ export default function AboutPage() {
           <section>
             <h2 className="text-2xl font-bold mb-6">Experience Timeline</h2>
             <div className="space-y-6">
-              {experiences.map((exp, index) => (
+              {jobs.map((exp, index) => (
                 <div key={index} className="terminal-window">
                   <div className="terminal-header">
                     <div className="terminal-button terminal-button-red"></div>
