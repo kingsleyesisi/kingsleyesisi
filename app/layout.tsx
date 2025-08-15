@@ -12,9 +12,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Cyberpunk Portfolio",
-  description: "A neo-brutalist cyberpunk portfolio",
-    generator: 'v0.dev'
+  title: "Kingsley Esisi Portfolio",
+  description: "Portfolio of Kingsley Esisi, a skilled developer specializing in Python, building automation scripts, developers tools, secure and scalable web applications. Passionate about cybersecurity, with expertise in developing robust APIs, optimizing server-side performance, and implementing secure coding practices. Explore my projects and skills."
+
 }
 
 export default function RootLayout({

@@ -12,20 +12,20 @@ export function Footer() {
             </p>
           </div>
           <div className="flex space-x-4">
-            <Link href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="https://github.com/kingsleyesisi" className="text-muted-foreground hover:text-primary transition-colors">
               <Github size={20} />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="https://twitter.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="https://x.com/kingsleyesisi" className="text-muted-foreground hover:text-primary transition-colors">
               <Twitter size={20} />
               <span className="sr-only">Twitter</span>
             </Link>
-            <Link href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="https://linkedin.com/in/kingsleyesisi" className="text-muted-foreground hover:text-primary transition-colors">
               <Linkedin size={20} />
               <span className="sr-only">LinkedIn</span>
             </Link>
             <Link
-              href="mailto:hello@example.com"
+              href="mailto:kingsleyesisi@yahoo.com"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail size={20} />

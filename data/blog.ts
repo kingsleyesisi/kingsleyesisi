@@ -65,7 +65,7 @@ export const blogPosts: BlogPost[] = [
       
       <p>By implementing these security practices, you can significantly improve the security posture of your Django applications and protect your users' data from potential threats.</p>
     `,
-    date: "2023-05-15",
+    date: "2025-05-15",
     readingTime: "5 min read",
     tags: ["Django", "Security", "Python", "Web Development"],
     category: "Security",
@@ -166,7 +166,7 @@ def predict(request):
       
       <p>By following these approaches, you can effectively integrate machine learning capabilities into your Django applications while maintaining scalability and performance.</p>
     `,
-    date: "2023-04-22",
+    date: "2025-04-22",
     readingTime: "7 min read",
     tags: ["Django", "Machine Learning", "Python", "API"],
     category: "Machine Learning",
@@ -226,7 +226,7 @@ def predict(request):
       
       <p>By implementing these optimization techniques, you can significantly improve the performance of your Django applications, providing a better user experience even as your application scales to handle more users and data.</p>
     `,
-    date: "2023-03-10",
+    date: "2025-03-10",
     readingTime: "6 min read",
     tags: ["Django", "Performance", "Optimization", "Scaling"],
     category: "Performance",
@@ -286,7 +286,7 @@ def predict(request):
       
       <p>By following these security best practices, you can significantly reduce the risk of security vulnerabilities in your Python applications and protect your users' data from potential threats.</p>
     `,
-    date: "2023-02-18",
+    date: "2025-08-18",
     readingTime: "8 min read",
     tags: ["Python", "Security", "Best Practices", "Cybersecurity"],
     category: "Security",

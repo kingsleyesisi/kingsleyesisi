@@ -15,10 +15,10 @@ export default function AboutPage() {
 
 
   const skills = [
-    { category: "Languages", items: ["Python", "JavaScript", "SQL", "Bash"] },
-    { category: "Backend", items: ["Django", "Django REST Framework", "Flask", "FastAPI", "GraphQL"] },
-    { category: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "SQLite"] },
-    { category: "DevOps", items: ["Docker", "Kubernetes", "AWS", "CI/CD", "Git"] },
+    { category: "Languages", items: ["Python", "JavaScript", "SQL", "Bash", "Java", "PHP"] },
+    { category: "Backend", items: ["Django", "Django REST Framework", "Flask", "FastAPI"] },
+    { category: "Database", items: ["PostgreSQL", "MySQL", "Redis", "SQLite"] },
+    { category: "DevOps", items: ["Docker", "AWS", "Google Cloud", "CI/CD", "Git"] },
     { category: "Security", items: ["OWASP", "Penetration Testing", "Auth Systems", "Encryption"] },
     { category: "ML/AI", items: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy", "Data Analysis"] },
   ]
@@ -35,7 +35,23 @@ export default function AboutPage() {
 
         {introComplete && (
           <Terminal
-            text="Hello, I'm KINGSLEY ESISI. A Python Backend Developer specializing in Django with a passion for cybersecurity and machine learning. I build secure, scalable web applications with a focus on performance, security, and reliability."
+            text="Hi! I'm Kingsley Esisi, 
+            a dedicated Python Backend Developer with a knack for building robust, 
+            scalable, and secure web applications using Django. 
+            My professional journey revolves around crafting efficient backend systems, 
+            designing RESTful APIs, and optimizing server-side performance to power seamless user experiences.
+             With a strong foundation in Python, I write clean, modular code that drives projects across 
+             diverse domains—from automation scripts and data pipelines to web applications and beyond.
+
+             
+            My passion for cybersecurity fuels my commitment to implementing secure coding practices,
+           ensuring applications are resilient against vulnerabilities. 
+          I'm also deeply curious about machine learning, 
+          where I leverage tools like Scikit-learn and TensorFlow to build intelligent, 
+          data-driven solutions. Whether it's streamlining processes with automation,
+           managing databases with PostgreSQL, or containerizing applications with Docker,
+            I thrive on solving complex challenges with creativity and precision."
+
             typingSpeed={20}
             className="max-w-3xl mx-auto mt-4"
             showPrompt={false}

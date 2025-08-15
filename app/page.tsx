@@ -15,13 +15,26 @@ export default function Home() {
   const featuredProjects = getFeaturedProjects()
   const latestPosts = getFeaturedPosts()
 
-  const skills = ["Python", "Django", "Flask", "FastAPI", "PostgreSQL", "Machine Learning", "Cybersecurity", "Docker"]
+  const skills =     ["Python: Writing clean, efficient code for backend systems, automation, and cross-domain scripts",
+    "Django: Building secure, scalable web apps and RESTful APIs with Django REST Framework",
+    "Flask: Developing lightweight, flexible web applications for rapid prototyping",
+    "FastAPI: Creating high-performance, asynchronous APIs for modern applications",
+    "PostgreSQL: Designing and optimizing relational database schemas and queries",
 
+    "Machine Learning: Building and deploying ML models with Scikit-learn and TensorFlow",
+    "Cybersecurity (Beginner): Applying secure coding practices and exploring tools like OWASP ZAP and others",
+    "Docker: Containerizing applications for consistent, scalable deployment"
+]
   return (
     <div className="space-y-16">
       <section className="py-12">
         <Terminal
-          text="Hello, World. I am KINGSLEY ESISI. Python Backend Developer specializing in Django. Passionate about cybersecurity and machine learning. Welcome to my digital realm."
+          text="Hey there! I'm Kingsley Esisi, 
+          a Python Backend Developer who thrives on crafting robust, scalable applications with Django. My passion for cybersecurity drives me to build secure systems, 
+          while my love for machine learning fuels my curiosity to explore intelligent solutions. 
+          From automation scripts to data pipelines and everything in between, 
+          I write Python code that powers diverse fields. Step into my world of code, creativity,
+           and innovation—let's build something extraordinary together!"
           typingSpeed={40}
           className="max-w-3xl mx-auto"
           onComplete={() => setIntroComplete(true)}
