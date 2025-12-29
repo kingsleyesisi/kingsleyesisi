@@ -46,8 +46,12 @@ export function ProjectForm({ project }: ProjectFormProps) {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="image">Image URL</Label>
-        <Input id="image" name="image" defaultValue={project?.image} required />
+        <Label htmlFor="image">Image</Label>
+        <div className="flex flex-col gap-2">
+           <Input id="image" name="image" defaultValue={project?.image} placeholder="Image URL (optional if uploading)" />
+           <p className="text-xs text-muted-foreground">Or upload a file:</p>
+           <Input id="imageFile" name="imageFile" type="file" accept="image/*" />
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">

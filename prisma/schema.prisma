@@ -203,6 +203,19 @@ model withdrawals {
   @@index([user_id])
 }
 
+model Project {
+  id              String   @id
+  title           String
+  description     String
+  longDescription String
+  image           String
+  technologies    String[]
+  category        String
+  github          String
+  demo            String
+  featured        Boolean  @default(false)
+}
+
 enum crypto_type {
   BTC
   ETH
@@ -247,15 +260,8 @@ enum withdrawal_status_type {
   Decline
 }
 
-model Project {
-  id              String   @id
-  title           String
-  description     String
-  longDescription String
-  image           String
-  technologies    String[]
-  category        String
-  github          String
-  demo            String
-  featured        Boolean  @default(false)
+model Skill {
+  id        String   @id @default(uuid())
+  name      String
+  category  String   @default("other")
 }

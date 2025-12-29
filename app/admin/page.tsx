@@ -34,6 +34,11 @@ export default async function AdminPage() {
               <Plus className="mr-2 h-4 w-4" /> Add Project
             </Button>
           </Link>
+          <Link href="/admin/skills">
+            <Button variant="secondary">
+               Manage Skills
+            </Button>
+          </Link>
           <form action={logout}>
             <Button variant="outline" type="submit">
               <LogOut className="mr-2 h-4 w-4" /> Logout
