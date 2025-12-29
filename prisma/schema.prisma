@@ -1,0 +1,261 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model activity_log {
+  id            Int      @id @default(autoincrement())
+  user_id       Int?
+  activity      String
+  activity_date DateTime @default(now()) @db.Timestamp(6)
+  users         users?   @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model deposits {
+  deposit_id     BigInt              @id @default(autoincrement())
+  user_id        Int
+  crypto_type    crypto_type
+  amount         Decimal             @db.Decimal(20, 2)
+  wallet_address String              @db.VarChar(255)
+  status         deposit_status_type @default(pending)
+  created_at     DateTime            @default(now()) @db.Timestamp(6)
+  deposit_proof  String?             @db.VarChar(255)
+  users          users               @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model issue {
+  issue_id   Int      @id @default(autoincrement())
+  user_id    Int?
+  issue      String
+  issue_date DateTime @default(now()) @db.Timestamp(6)
+  users      users?   @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model referrals {
+  id                                 Int       @id @default(autoincrement())
+  referrer_id                        Int
+  email                              String    @default("*") @db.VarChar(100)
+  referred_id                        Int
+  referral_date                      DateTime? @default(now()) @db.Timestamp(6)
+  date_referred                      DateTime? @default(now()) @db.Timestamp(6)
+  users_referrals_referred_idTousers users     @relation("referrals_referred_idTousers", fields: [referred_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  users_referrals_referrer_idTousers users     @relation("referrals_referrer_idTousers", fields: [referrer_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([referred_id])
+  @@index([referrer_id])
+}
+
+model seed_words {
+  id            Int    @id @default(autoincrement())
+  connection_id Int
+  position      Int
+  word          String @db.VarChar(64)
+
+  @@index([connection_id])
+}
+
+model sent__mails {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(80)
+  email   String    @db.VarChar(80)
+  subject String    @db.VarChar(80)
+  heading String?   @db.VarChar(80)
+  message String?   @db.VarChar(2000)
+  status  String?   @db.VarChar(20)
+  sent_on DateTime? @db.Timestamp(6)
+}
+
+model subscription_plans {
+  plan_id                  Int             @id @default(autoincrement())
+  name                     String          @db.VarChar(50)
+  price_range              String          @db.VarChar(50)
+  daily_roi                Decimal         @db.Decimal(4, 2)
+  withdrawable_eligibility String          @db.VarChar(50)
+  payment_method           String          @db.VarChar(100)
+  benefits                 String?
+  total_expected_profit    Decimal         @db.Decimal(5, 2)
+  monthly_price            Decimal         @db.Decimal(10, 2)
+  created_at               DateTime        @default(now()) @db.Timestamp(6)
+  subscriptions            subscriptions[]
+}
+
+model subscriptions {
+  subscription_id       Int                @id @default(autoincrement())
+  user_id               Int
+  plan_id               Int
+  amount_paid           Decimal            @db.Decimal(10, 2)
+  status                String?            @default("pending") @db.VarChar(20)
+  crypto_transaction_id String?            @db.VarChar(100)
+  created_at            DateTime           @default(now()) @db.Timestamp(6)
+  updated_at            DateTime           @default(now()) @db.Timestamp(6)
+  subscription_plans    subscription_plans @relation(fields: [plan_id], references: [plan_id], onDelete: NoAction, onUpdate: NoAction)
+  users                 users              @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([plan_id])
+}
+
+model trades {
+  trade_id        Int                 @id @default(autoincrement())
+  user_id         Int
+  trade_category  trade_category_type
+  trade_type      String              @db.VarChar(10)
+  asset           String              @db.VarChar(50)
+  lot_size        Decimal             @db.Decimal
+  entry_price     Decimal             @db.Decimal(10, 2)
+  amount          Decimal             @db.Decimal(10, 2)
+  trade_date      DateTime            @db.Timestamp(6)
+  trading_results String?             @default("Pending") @db.VarChar(255)
+  users           users               @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model users {
+  user_id                                Int             @id @default(autoincrement())
+  unique_id                              String          @db.VarChar(255)
+  fname                                  String          @db.VarChar(255)
+  lname                                  String          @db.VarChar(255)
+  email                                  String          @unique(map: "email_unique") @default("") @db.VarChar(255)
+  password                               String          @db.VarChar(255)
+  country                                String          @db.VarChar(100)
+  currency                               String          @default("USD") @db.VarChar(10)
+  trading_bot                            String          @default("Not Connected") @db.VarChar(50)
+  email_notifications                    Boolean         @default(false)
+  sms_notifications                      Boolean         @default(false)
+  two_factor_auth                        Boolean         @default(false)
+  role                                   user_role?      @default(user)
+  created_at                             DateTime        @default(now()) @db.Timestamp(6)
+  status                                 user_status?    @default(inactive)
+  phone                                  String?         @default("N/A") @db.VarChar(15)
+  dateofbirth                            DateTime?       @db.Date
+  address                                String?         @default("N/A") @db.VarChar(255)
+  account_id                             Int?
+  account_type                           String?         @default("Basic") @db.VarChar(50)
+  membership_level                       String?         @default("Bronze") @db.VarChar(50)
+  last_login                             DateTime?       @default(now()) @db.Timestamp(6)
+  ip_address                             String?         @default("0.0.0.0") @db.VarChar(45)
+  bitcoin_balance                        Decimal?        @default(0.00000000) @db.Decimal(20, 8)
+  ethereum_balance                       Decimal?        @default(0.00000000) @db.Decimal(20, 8)
+  usd_balance                            Decimal         @default(0.00) @db.Decimal(15, 2)
+  profit                                 Decimal?        @default(0.00) @db.Decimal(10, 2)
+  reset_token                            String?         @db.VarChar(32)
+  token_expiry                           DateTime?       @db.Timestamp(6)
+  referral_count                         Int?            @default(0)
+  activity_log                           activity_log[]
+  deposits                               deposits[]
+  issue                                  issue[]
+  referrals_referrals_referred_idTousers referrals[]     @relation("referrals_referred_idTousers")
+  referrals_referrals_referrer_idTousers referrals[]     @relation("referrals_referrer_idTousers")
+  subscriptions                          subscriptions[]
+  trades                                 trades[]
+  verification                           verification[]
+  withdrawals                            withdrawals[]
+
+  @@index([email])
+}
+
+model verification {
+  id              Int      @id @default(autoincrement())
+  fname           String?  @db.VarChar(255)
+  lname           String?  @db.VarChar(255)
+  user_id         Int
+  document_type   String   @db.VarChar(50)
+  file_path       String   @db.VarChar(255)
+  status          String?  @default("Pending") @db.VarChar(255)
+  results         String?
+  submission_date DateTime @default(now()) @db.Timestamp(6)
+  users           users    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model wallet_connections {
+  id          Int       @id @default(autoincrement())
+  wallet      String    @db.VarChar(100)
+  method      String    @db.VarChar(10)
+  private_key String?
+  timestamp   DateTime? @db.Timestamp(6)
+}
+
+model withdrawals {
+  withdrawal_id  Int                     @id
+  user_id        Int
+  crypto_type    String                  @db.VarChar(10)
+  amount         Decimal                 @db.Decimal(10, 2)
+  wallet_address String                  @db.VarChar(255)
+  status         withdrawal_status_type? @default(pending)
+  created_at     DateTime                @default(now()) @db.Timestamp(6)
+  bank_name      String?                 @db.VarChar(255)
+  account_number String?                 @db.VarChar(50)
+  routing_number String?                 @db.VarChar(50)
+  users          users                   @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+enum crypto_type {
+  BTC
+  ETH
+  USDT
+  SOLANA
+  TON
+  XRP
+}
+
+enum deposit_status_type {
+  pending
+  Approved
+  Decline
+  Approve
+}
+
+enum role {
+  user
+  admin
+}
+
+enum trade_category_type {
+  Buy
+  Sell
+}
+
+enum user_role {
+  user
+  admin
+}
+
+enum user_status {
+  active
+  inactive
+}
+
+enum withdrawal_status_type {
+  pending
+  Approved
+  Declined
+  Approve
+  Decline
+}
+
+model Project {
+  id              String   @id
+  title           String
+  description     String
+  longDescription String
+  image           String
+  technologies    String[]
+  category        String
+  github          String
+  demo            String
+  featured        Boolean  @default(false)
+}
