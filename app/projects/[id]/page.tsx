@@ -1,15 +1,17 @@
-"use client"
-
-import { useParams, notFound } from "next/navigation"
+import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Github, ExternalLink } from "lucide-react"
 import { getProjectById } from "@/data/projects"
 
-export default function ProjectPage() {
-  const { id } = useParams<{ id: string }>()
+interface PageProps {
+  params: Promise<{ id: string }>
+}
 
-  const project = getProjectById(id)
+export default async function ProjectPage({ params }: PageProps) {
+  const { id } = await params
+
+  const project = await getProjectById(id)
 
   if (!project) {
     notFound()
@@ -81,4 +83,3 @@ export default function ProjectPage() {
     </div>
   )
 }
-

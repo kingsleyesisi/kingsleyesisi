@@ -1,9 +1,8 @@
-"use client"
-
 import { ProjectCard } from "@/components/project-card"
-import { projects } from "@/data/projects"
+import { getProjects } from "@/data/projects"
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects()
 
   return (
     <div className="space-y-8">
@@ -36,4 +35,3 @@ export default function ProjectsPage() {
     </div>
   )
 }
-
