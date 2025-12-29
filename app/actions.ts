@@ -4,7 +4,16 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
-import { Project } from '@/data/types'
+import { put } from '@vercel/blob'
+
+// Authentication
+async function requireAuth() {
+  const cookieStore = await cookies()
+  const token = cookieStore.get('auth_token')
+  if (!token) {
+    redirect('/login')
+  }
+}
 
 export async function login(prevState: any, formData: FormData) {
   const username = formData.get('username')
@@ -25,26 +34,29 @@ export async function logout() {
   redirect('/login')
 }
 
-async function requireAuth() {
-  const cookieStore = await cookies()
-  const token = cookieStore.get('auth_token')
-  if (!token) {
-    redirect('/login')
-  }
-}
-
+// Projects
 export async function addProject(formData: FormData) {
   await requireAuth()
 
   const title = formData.get('title') as string
   const description = formData.get('description') as string
   const longDescription = formData.get('longDescription') as string
-  const image = formData.get('image') as string
+  let image = formData.get('image') as string
+  const imageFile = formData.get('imageFile') as File
   const technologies = (formData.get('technologies') as string).split(',').map(t => t.trim())
   const category = formData.get('category') as string
   const github = formData.get('github') as string
   const demo = formData.get('demo') as string
   const featured = formData.get('featured') === 'on'
+
+  if (imageFile && imageFile.size > 0) {
+    try {
+        const blob = await put(imageFile.name, imageFile, { access: 'public' })
+        image = blob.url
+    } catch (error) {
+        console.error('Upload failed:', error)
+    }
+  }
 
   const id = title.toLowerCase().replace(/ /g, '-')
 
@@ -54,7 +66,7 @@ export async function addProject(formData: FormData) {
       title,
       description,
       longDescription,
-      image,
+      image: image || '/placeholder.svg',
       technologies,
       category,
       github,
@@ -74,12 +86,22 @@ export async function updateProject(id: string, formData: FormData) {
   const title = formData.get('title') as string
   const description = formData.get('description') as string
   const longDescription = formData.get('longDescription') as string
-  const image = formData.get('image') as string
+  let image = formData.get('image') as string
+  const imageFile = formData.get('imageFile') as File
   const technologies = (formData.get('technologies') as string).split(',').map(t => t.trim())
   const category = formData.get('category') as string
   const github = formData.get('github') as string
   const demo = formData.get('demo') as string
   const featured = formData.get('featured') === 'on'
+
+  if (imageFile && imageFile.size > 0) {
+     try {
+        const blob = await put(imageFile.name, imageFile, { access: 'public' })
+        image = blob.url
+     } catch (error) {
+         console.error('Upload failed:', error)
+     }
+  }
 
   await prisma.project.update({
     where: { id },
@@ -111,4 +133,31 @@ export async function deleteProject(id: string) {
   revalidatePath('/projects')
   revalidatePath('/')
   revalidatePath('/admin')
+}
+
+// Skills
+export async function addSkill(formData: FormData) {
+    await requireAuth()
+    const name = formData.get('name') as string
+    const category = formData.get('category') as string
+
+    if (!name || !category) return
+
+    await prisma.skill.create({
+        data: {
+            name,
+            category
+        }
+    })
+    revalidatePath('/')
+    revalidatePath('/admin/skills')
+}
+
+export async function deleteSkill(id: string) {
+    await requireAuth()
+    await prisma.skill.delete({
+        where: { id }
+    })
+    revalidatePath('/')
+    revalidatePath('/admin/skills')
 }

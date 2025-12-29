@@ -7,28 +7,31 @@ import { ProjectCard } from "@/components/project-card"
 import { BlogCard } from "@/components/blog-card"
 import { ArrowRight } from "lucide-react"
 import { Project } from "@/data/types"
-// Assuming Blog type is similar or I need to import it. Let's check imports in original page.
-// The original page imported getFeaturedPosts from "@/data/blog". I need to know the return type.
-// But for now I'll use `any` or check blog.ts.
+import { Skill } from "@/data/skills"
 
 interface HomeClientProps {
   featuredProjects: Project[]
   latestPosts: any[]
+  skills: Skill[]
 }
 
-export default function HomeClient({ featuredProjects, latestPosts }: HomeClientProps) {
+export default function HomeClient({ featuredProjects, latestPosts, skills }: HomeClientProps) {
   const [introComplete, setIntroComplete] = useState(false)
 
-  const skills = [
-    "Python: Writing clean, efficient code for backend systems, automation, and cross-domain scripts",
-    "Django: Building secure, scalable web apps and RESTful APIs with Django REST Framework",
-    "Flask: Developing lightweight, flexible web applications for rapid prototyping",
-    "FastAPI: Creating high-performance, asynchronous APIs for modern applications",
-    "PostgreSQL: Designing and optimizing relational database schemas and queries",
-    "Machine Learning: Building and deploying ML models with Scikit-learn and TensorFlow",
-    "Cybersecurity (Beginner): Applying secure coding practices and exploring tools like OWASP ZAP and others",
-    "Docker: Containerizing applications for consistent, scalable deployment"
-  ]
+  // Use DB skills if available, otherwise fallback (or just use DB skills)
+  // For now, if DB is empty, this might be empty. Ideally we should seed skills too,
+  // but the user wants to add them via admin.
+  // I will just map the DB skills.
+  // If the user wants to group them, we might need logic, but the current UI just lists them.
+  // Actually, the previous UI had hardcoded string array:
+  // "Python: Writing clean...", etc.
+  // The new Skill model has `name` and `category`.
+  // I should probably format them similarly or adjust the display.
+  // Let's assume the user enters "Python: Writing clean..." as the name for now, OR
+  // display as "Name (Category)".
+  // Let's check the original display.
+  // Original: <span className="text-white">{skill}</span>
+  // I will just display skill.name.
 
   return (
     <div className="space-y-16">
@@ -83,12 +86,16 @@ export default function HomeClient({ featuredProjects, latestPosts }: HomeClient
           </div>
           <div className="terminal-content">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {skills.map((skill, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="text-primary">$</span>
-                  <span className="text-white">{skill}</span>
-                </div>
-              ))}
+              {skills.length > 0 ? (
+                  skills.map((skill) => (
+                    <div key={skill.id} className="flex items-center gap-2">
+                      <span className="text-primary">$</span>
+                      <span className="text-white">{skill.name} <span className="text-muted-foreground text-xs">({skill.category})</span></span>
+                    </div>
+                  ))
+              ) : (
+                  <div className="text-muted-foreground">No skills added yet.</div>
+              )}
             </div>
           </div>
         </div>
