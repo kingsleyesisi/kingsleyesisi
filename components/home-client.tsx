@@ -8,6 +8,7 @@ import { BlogCard } from "@/components/blog-card"
 import { ArrowRight } from "lucide-react"
 import { Project } from "@/data/types"
 import { Skill } from "@/data/skills"
+import { SkillsTerminal } from "@/components/skills-terminal"
 
 interface HomeClientProps {
   featuredProjects: Project[]
@@ -77,28 +78,7 @@ export default function HomeClient({ featuredProjects, latestPosts, skills }: Ho
 
       <section>
         <h2 className="text-2xl font-bold mb-6">Skills</h2>
-        <div className="terminal-window">
-          <div className="terminal-header">
-            <div className="terminal-button terminal-button-red"></div>
-            <div className="terminal-button terminal-button-yellow"></div>
-            <div className="terminal-button terminal-button-green"></div>
-            <div className="terminal-title">system_specs.sh</div>
-          </div>
-          <div className="terminal-content">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {skills.length > 0 ? (
-                  skills.map((skill) => (
-                    <div key={skill.id} className="flex items-center gap-2">
-                      <span className="text-primary">$</span>
-                      <span className="text-white">{skill.name} <span className="text-muted-foreground text-xs">({skill.category})</span></span>
-                    </div>
-                  ))
-              ) : (
-                  <div className="text-muted-foreground">No skills added yet.</div>
-              )}
-            </div>
-          </div>
-        </div>
+        <SkillsTerminal skills={skills} />
       </section>
 
       <section>
