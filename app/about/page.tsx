@@ -28,7 +28,7 @@ export default function AboutPage() {
       <section>
         <Terminal
           text="Initializing personal profile... Access granted. Loading bio data..."
-          typingSpeed={30}
+          typingSpeed={10}
           className="max-w-3xl mx-auto"
           onComplete={() => setIntroComplete(true)}
         />
@@ -52,7 +52,7 @@ export default function AboutPage() {
            managing databases with PostgreSQL, or containerizing applications with Docker,
             I thrive on solving complex challenges with creativity and precision."
 
-            typingSpeed={20}
+            typingSpeed={3}
             className="max-w-3xl mx-auto mt-4"
             showPrompt={false}
             onComplete={() => setBioComplete(true)}
