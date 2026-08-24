@@ -19,12 +19,9 @@ Currently diving deep into:
 I'm open to collaborate on projects. If you have an interesting project, let's connect!
 
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kingsleyesisi/) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://twitter.com/kingsleyesisi) [![WhatsApp](https://img.shields.io/badge/WhatsApp-green.svg?logo=WhatsApp&logoColor=white)](https://wa.me/+2349150309346) 
-[![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:kingsleyesisi@yahoo.com)
-
 <br/>
 
-<img align="center" src="https://github-readme-activity-graph.vercel.app/graph?username=kingsleyesisi&bg_color=1a1b27&color=1f6feb&line=38bcad&point=628fdb&area=true&hide_border=true" alt="Kingsley's GitHub Activity Graph" />
+<img align="center" src="https://github-readme-activity-graph.vercel.app/graph?username=thisusercannotexist&bg_color=1a1b27&color=1f6feb&line=38bcad&point=628fdb&area=true&hide_border=true" alt="Kingsley's GitHub Activity Graph" />
 
 <br />
 
@@ -57,11 +54,11 @@ I'm open to collaborate on projects. If you have an interesting project, let's c
 
 
 # 📊 GitHub Stats:
-![](https://github-readme-streak-stats.herokuapp.com/?user=kingsleyesisi&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=kingsleyesisi&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
+![](https://github-readme-streak-stats.herokuapp.com/?user=thisusercannotexist&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=thisusercannotexist&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 ## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=kingsleyesisi&theme=radical&no-frame=true&no-bg=false&margin-w=4)
+![](https://github-profile-trophy.vercel.app/?username=thisusercannotexist&theme=radical&no-frame=true&no-bg=false&margin-w=4)
 
 
 ### ✍️ Random Dev Quote
