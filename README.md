@@ -21,7 +21,7 @@ I'm open to collaborate on projects. If you have an interesting project, let's c
 
 <br/>
 
-<img align="center" src="https://github-readme-activity-graph.vercel.app/graph?username=thisusercannotexist&bg_color=1a1b27&color=1f6feb&line=38bcad&point=628fdb&area=true&hide_border=true" alt="Kingsley's GitHub Activity Graph" />
+<img align="center" src="https://github-readme-activity-graph.vercel.app/graph?username=thisusercannotexist&bg_color=1a1b27&color=1f6feb&line=38bcad&point=628fdb&area=true&hide_border=true" alt="Users GitHub Activity Graph" />
 
 <br />
 
